@@ -3636,8 +3636,12 @@ iwm_stop(struct _ifnet *ifp)
     
     sc->sc_generation++;
     for (i = 0; i < nitems(sc->sc_cmd_resp_pkt); i++) {
-        ::free(sc->sc_cmd_resp_pkt[i]);
-        sc->sc_cmd_resp_pkt[i] = NULL;
+        if (sc->sc_cmd_resp_pkt[i] != NULL)
+        {
+            uint8_t *tmp = sc->sc_cmd_resp_pkt[i];
+            sc->sc_cmd_resp_pkt[i] = NULL;
+            ::free(tmp);
+        }
         sc->sc_cmd_resp_len[i] = 0;
     }
     ifp->if_flags &= ~IFF_RUNNING;

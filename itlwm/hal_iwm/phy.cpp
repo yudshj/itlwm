@@ -635,6 +635,7 @@ iwm_send_cmd(struct iwm_softc *sc, struct iwm_host_cmd *hcmd)
     if (!async) {
         err = tsleep_nsec(desc, PCATCH, "iwmcmd", SEC_TO_NSEC(2));
         if (err == 0) {
+            uint8_t *tmp = NULL;
             /* if hardware is no longer up, return error */
             if (generation != sc->sc_generation) {
                 err = ENXIO;
@@ -642,11 +643,13 @@ iwm_send_cmd(struct iwm_softc *sc, struct iwm_host_cmd *hcmd)
             }
             
             /* Response buffer will be freed in iwm_free_resp(). */
-            hcmd->resp_pkt = (struct iwm_rx_packet *)sc->sc_cmd_resp_pkt[idx];
+            tmp = sc->sc_cmd_resp_pkt[idx];
             sc->sc_cmd_resp_pkt[idx] = NULL;
-        } else if (generation == sc->sc_generation) {
-            ::free(sc->sc_cmd_resp_pkt[idx]);
+            hcmd->resp_pkt = (struct iwm_rx_packet *)tmp;
+        } else if (generation == sc->sc_generation && sc->sc_cmd_resp_pkt[idx] != NULL) {
+            uint8_t *tmp = sc->sc_cmd_resp_pkt[idx];
             sc->sc_cmd_resp_pkt[idx] = NULL;
+            ::free(tmp);
         }
     }
 out:

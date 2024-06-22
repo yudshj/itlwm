@@ -6425,6 +6425,7 @@ iwx_send_cmd(struct iwx_softc *sc, struct iwx_host_cmd *hcmd)
     if (!async) {
         err = tsleep_nsec(desc, PCATCH, "iwxcmd", SEC_TO_NSEC(1));
         if (err == 0) {
+            uint8_t * tmp = NULL;
             /* if hardware is no longer up, return error */
             if (generation != sc->sc_generation) {
                 err = ENXIO;
@@ -6432,11 +6433,13 @@ iwx_send_cmd(struct iwx_softc *sc, struct iwx_host_cmd *hcmd)
             }
             
             /* Response buffer will be freed in iwx_free_resp(). */
-            hcmd->resp_pkt = (struct iwx_rx_packet *)sc->sc_cmd_resp_pkt[idx];
+            tmp = sc->sc_cmd_resp_pkt[idx];
             sc->sc_cmd_resp_pkt[idx] = NULL;
-        } else if (generation == sc->sc_generation) {
-            ::free(sc->sc_cmd_resp_pkt[idx]);
+            hcmd->resp_pkt = (struct iwx_rx_packet *)tmp;
+        } else if (generation == sc->sc_generation && sc->sc_cmd_resp_pkt[idx] != NULL) {
+            uint8_t * tmp = sc->sc_cmd_resp_pkt[idx];
             sc->sc_cmd_resp_pkt[idx] = NULL;
+            ::free(tmp);
         }
     }
 out:
@@ -10385,8 +10388,12 @@ iwx_stop(struct _ifnet *ifp)
     
     sc->sc_generation++;
     for (i = 0; i < nitems(sc->sc_cmd_resp_pkt); i++) {
-        ::free(sc->sc_cmd_resp_pkt[i]);
-        sc->sc_cmd_resp_pkt[i] = NULL;
+        if (sc->sc_cmd_resp_pkt[i] != NULL)
+        {
+            uint8_t *tmp = sc->sc_cmd_resp_pkt[i];
+            sc->sc_cmd_resp_pkt[i] = NULL;
+            ::free(tmp);
+        }
         sc->sc_cmd_resp_len[i] = 0;
     }
     ifp->if_flags &= ~IFF_RUNNING;
@@ -11037,8 +11044,12 @@ iwx_rx_pkt(struct iwx_softc *sc, struct iwx_rx_data *data, struct mbuf_list *ml)
                 if ((pkt->hdr.group_id & IWX_CMD_FAILED_MSK) ||
                     pkt_len < sizeof(*pkt) ||
                     pkt_len > sc->sc_cmd_resp_len[idx]) {
-                    ::free(sc->sc_cmd_resp_pkt[idx]);
-                    sc->sc_cmd_resp_pkt[idx] = NULL;
+                    if (sc->sc_cmd_resp_pkt[idx] != NULL)
+                    {
+                        uint8_t *tmp = sc->sc_cmd_resp_pkt[idx];
+                        sc->sc_cmd_resp_pkt[idx] = NULL;
+                        ::free(tmp);
+                    }
                     break;
                 }
                 
