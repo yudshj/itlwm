@@ -60,9 +60,6 @@ public:
 #if __IO80211_TARGET >= __MAC_14_4
     virtual void setInfraSpecificFrameStats(apple80211_stat_report *,apple80211_infra_specific_stats *) APPLE_KEXT_OVERRIDE;
 #endif
-#if __IO80211_TARGET >= __MAC_15_0
-    virtual void setInfraSpecificFrameStats(apple80211_stat_report *,apple80211_infra_specific_stats *) APPLE_KEXT_OVERRIDE;
-#endif
     virtual SInt64 getWmeTxCounters(unsigned long long *) APPLE_KEXT_OVERRIDE;
     virtual void setEnabledBySystem(bool) APPLE_KEXT_OVERRIDE;
     virtual bool enabledBySystem(void) APPLE_KEXT_OVERRIDE;
