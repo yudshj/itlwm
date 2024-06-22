@@ -1256,7 +1256,7 @@
 		17FD7F41255E4EB300611406 /* iwn-5150 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iwn-5150"; sourceTree = "<group>"; };
 		17FD7F42255E4EB300611406 /* iwn-2000 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iwn-2000"; sourceTree = "<group>"; };
 		17FD7F44255E4EB300611406 /* iwn-4965 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iwn-4965"; sourceTree = "<group>"; };
-		1EB6DA0B2C2734CB002C5824 /* AirportItlwm-Sequoia.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AirportItlwm-Sequoia.kext"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EB6DA0B2C2734CB002C5824 /* AirportItlwm.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirportItlwm.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CBE6BA251CB89700435CBC /* AirportItlwm.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirportItlwm.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CBE724251CB8BF00435CBC /* AirportItlwm.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirportItlwm.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CBE78F251CB8CA00435CBC /* AirportItlwm.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirportItlwm.kext; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1533,7 +1533,7 @@
 				F8AE6558285471560085B4CF /* AirportItlwm.kext */,
 				F8B2110A2A2EC2680043ECBD /* AirportItlwm.kext */,
 				F8D94CF52B9ABFE20081A3C4 /* AirportItlwm.kext */,
-				1EB6DA0B2C2734CB002C5824 /* AirportItlwm-Sequoia.kext */,
+				1EB6DA0B2C2734CB002C5824 /* AirportItlwm.kext */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2350,7 +2350,7 @@
 			);
 			name = "AirportItlwm-Sequoia";
 			productName = AirportItlwm;
-			productReference = 1EB6DA0B2C2734CB002C5824 /* AirportItlwm-Sequoia.kext */;
+			productReference = 1EB6DA0B2C2734CB002C5824 /* AirportItlwm.kext */;
 			productType = "com.apple.product-type.kernel-extension";
 		};
 		35CBE655251CB89700435CBC /* AirportItlwm-Big Sur */ = {
@@ -3739,7 +3739,7 @@
 					__PRIVATE_SPI__,
 					IO80211FAMILY_V2,
 				);
-				INFOPLIST_FILE = "AirportItlwm/AirportItlwm-Sequoia-Info.plist";
+				INFOPLIST_FILE = "AirportItlwm/AirportItlwm-Sonoma-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/itl80211",
 					"$(inherited)",
@@ -3751,7 +3751,7 @@
 				MODULE_NAME = com.zxystd.AirportItlwm;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zxystd.AirportItlwm;
 				PRODUCT_MODULE_NAME = AirportItlwm;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AirportItlwm;
 				SYSTEM_HEADER_SEARCH_PATHS = "itl80211/openbsd itl80211 include";
 				WRAPPER_EXTENSION = kext;
 			};
@@ -3771,7 +3771,7 @@
 					"$(inherited)",
 					IO80211FAMILY_V2,
 				);
-				INFOPLIST_FILE = "AirportItlwm/AirportItlwm-Sequoia-Info.plist";
+				INFOPLIST_FILE = "AirportItlwm/AirportItlwm-Sonoma-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/itl80211",
 					"$(inherited)",
@@ -3783,7 +3783,7 @@
 				MODULE_NAME = com.zxystd.AirportItlwm;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zxystd.AirportItlwm;
 				PRODUCT_MODULE_NAME = AirportItlwm;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AirportItlwm;
 				SYSTEM_HEADER_SEARCH_PATHS = "itl80211/openbsd itl80211 include";
 				WRAPPER_EXTENSION = kext;
 			};
