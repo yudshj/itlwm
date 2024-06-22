@@ -1257,7 +1257,6 @@
 		17FD7F42255E4EB300611406 /* iwn-2000 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iwn-2000"; sourceTree = "<group>"; };
 		17FD7F44255E4EB300611406 /* iwn-4965 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iwn-4965"; sourceTree = "<group>"; };
 		1EB6DA0B2C2734CB002C5824 /* AirportItlwm-Sequoia.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AirportItlwm-Sequoia.kext"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1EB6DA0C2C2734CB002C5824 /* AirportItlwm-Sonoma14.4 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AirportItlwm-Sonoma14.4 copy-Info.plist"; path = "/Users/lorys89/Documents/GitHub/itlwm/AirportItlwm-Sonoma14.4 copy-Info.plist"; sourceTree = "<absolute>"; };
 		35CBE6BA251CB89700435CBC /* AirportItlwm.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirportItlwm.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CBE724251CB8BF00435CBC /* AirportItlwm.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirportItlwm.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CBE78F251CB8CA00435CBC /* AirportItlwm.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirportItlwm.kext; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1519,7 +1518,6 @@
 				F89B6BBA25021C9C000F77FF /* AirportItlwm */,
 				024A07AD23FCBC3C009FBA6C /* Products */,
 				5088ECBB252884870068A63D /* Frameworks */,
-				1EB6DA0C2C2734CB002C5824 /* AirportItlwm-Sonoma14.4 copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
